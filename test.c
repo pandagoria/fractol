@@ -46,8 +46,8 @@ int ft_julia(int argc, char **argv)
 		j = 0;
 		while (j < SIZE)
 		{
-			data.re = (double) (i - SIZE / 2) + 300;
-			data.im = (double) (i - SIZE / 2) + 300;
+			data.re = (double) (i - SIZE / 2) / 300;
+			data.im = (double) (i - SIZE / 2) / 300;
 			data.i = ft_julia_iter(data);
 			data.color = get_color(data.i);
 			my_mlx_pixel_put(&data.img, i, j, data.color);
