@@ -5,6 +5,8 @@ SRCS = main.c
 
 OBJ = $(SRCS:.c=.o)
 
+all: $(NAME)
+
 %.o: %.c
 	$(CC) -Wall -Wextra -Werror -Imlx -c $< -o $@
 

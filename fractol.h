@@ -6,6 +6,15 @@
 # include <stdio.h>
 
 typedef struct	s_data {
+    int     i;
+    int     col;
+    double  re;
+    double  im;
+    double  re_prm;
+    double  im_prm;
+}				t_data;
+
+typedef struct	s_mlx {
     void    *mlx;
     void    *mlx_win;
 	void	*img;
@@ -13,12 +22,6 @@ typedef struct	s_data {
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
-    int     i;
-    int     col;
-    double  re;
-    double  im;
-    double  re_c;
-    double  im_c;
-}				t_data;
+}   t_mlx;
 
 #endif

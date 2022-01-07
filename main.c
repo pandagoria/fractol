@@ -44,8 +44,8 @@ int ft_fractal_julia_iter(t_complex x)
 {
     t_complex   C;
 
-    C.re = 0.2;
-    C.im = -0.75;
+    C.re = 0.25;
+    C.im = 0.75;
     int iter_count = 0;
     while (iter_count < 100 && x.re * x.re + x.im * x.im <= 4)
     {
@@ -84,7 +84,7 @@ int	main(void)
             my_mlx_pixel_put(&img, i, j, color);
         }
     }
-    mlx_hook(vars.win, 2, 1L<<0, close, &vars);
+   // mlx_hook(vars.win, 2, 1L<<0, close, &vars);
 	mlx_put_image_to_window(mlx, mlx_win, img.img, 0, 0);
 	mlx_loop(mlx);
 }
