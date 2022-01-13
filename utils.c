@@ -5,6 +5,35 @@ int	ft_isdigit(char c)
 	return (c >= '0' && c <= '9');
 }
 
+void	complex_cub(double *re, double *im)
+{
+	double	re_tmp;
+	double	im_tmp;
+	double	re_sqr;
+	double	im_sqr;
+
+	re_tmp = *re;
+	im_tmp = *im;
+	complex_sqrt(re, im);
+	re_sqr = *re;
+	im_sqr = *im;
+	*re = (re_sqr * re_tmp) - (im_sqr * im_tmp);
+	*im = (re_sqr * im_tmp) + (re_tmp * im_sqr);
+}
+
+/*void	complex_div(t_data *a)
+{
+	double	sqr;
+	double	_re;
+	double	_im;
+
+	sqr = a->new_re * a->new_re + a->new_im * a->new_im;
+	_re = (a->re * a->new_re + a->im * a->new_im) / sqr;
+	_im = (a->im * a->new_re - a->re * a->new_im) / sqr;
+	a->re = _re;
+	a->im = _im;
+}*/
+
 void	complex_summ(t_data *a)
 {
 	a->re += a->re_prm;

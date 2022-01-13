@@ -63,32 +63,9 @@ int	ft_julia_iter(t_data *data)
 	n = 0;
 	while (n < 100 && (data->re * data->re) + (data->im * data->im) <= 4)
 	{
-		// complex_sqrt(&data->re, &data->im);
-		// complex_summ(data);
-		
-		// data->re = sin(data->re);
-		// data->im = sin(data->im);
-		// complex_sqrt(&data->re, &data->im);
-		// data->re += data->re_prm;
-		// data->im += data->im_prm; -1 0
+		complex_sqrt(&data->re, &data->im);
+		complex_summ(data);
 		n++;
 	}
 	return (n);
-}
-
-int ft_julia(char **argv)
-{
-	t_data  data;
-
-	if (check_given_params(argv, &data) == -1)
-		return (-1);
-	data.scale = 300;
-	data.fractal = JULIA;
-	data.mlx = init_mlx();
-	data.func = ft_julia_iter;
-	render_fractol(&data);
-    //mlx_hook(vars.win, 2, 1L<<0, close, &vars);
-	mlx_hook(data.mlx.mlx_win, MOUSE_UP, 0, zoom, &data);
-	mlx_loop(data.mlx.mlx);
-	return (0);
 }

@@ -17,17 +17,3 @@ int	ft_mandelbrot_iter(t_data *data)
 	}
 	return (n);
 }
-
-int ft_mandelbrot(void)
-{
-	t_data  data;
-
-	data.scale = 300;
-	data.fractal = MANDELBROT;
-	data.mlx = init_mlx();
-	data.func = ft_mandelbrot_iter;
-	render_fractol(&data);
-	mlx_hook(data.mlx.mlx_win, MOUSE_UP, 0, zoom, &data);
-	mlx_loop(data.mlx.mlx);
-	return (0);
-}
