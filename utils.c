@@ -1,54 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hlaunch <hlaunch@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/01/13 23:48:23 by hlaunch           #+#    #+#             */
+/*   Updated: 2022/01/14 08:40:41 by hlaunch          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fractol.h"
 
 int	ft_isdigit(char c)
 {
 	return (c >= '0' && c <= '9');
-}
-
-void	complex_cub(double *re, double *im)
-{
-	double	re_tmp;
-	double	im_tmp;
-	double	re_sqr;
-	double	im_sqr;
-
-	re_tmp = *re;
-	im_tmp = *im;
-	complex_sqrt(re, im);
-	re_sqr = *re;
-	im_sqr = *im;
-	*re = (re_sqr * re_tmp) - (im_sqr * im_tmp);
-	*im = (re_sqr * im_tmp) + (re_tmp * im_sqr);
-}
-
-/*void	complex_div(t_data *a)
-{
-	double	sqr;
-	double	_re;
-	double	_im;
-
-	sqr = a->new_re * a->new_re + a->new_im * a->new_im;
-	_re = (a->re * a->new_re + a->im * a->new_im) / sqr;
-	_im = (a->im * a->new_re - a->re * a->new_im) / sqr;
-	a->re = _re;
-	a->im = _im;
-}*/
-
-void	complex_summ(t_data *a)
-{
-	a->re += a->re_prm;
-	a->im += a->im_prm;
-}
-
-void	complex_sqrt(double *re, double *im)
-{
-	double	re_tmp;
-	double	im_tmp;
-
-	re_tmp = *re;
-	im_tmp = *im;
-	*re = (re_tmp * re_tmp) - (im_tmp * im_tmp);
-	*im = (re_tmp * im_tmp) * 2;
 }
 
 int	ft_strncmp(const char *s1, const char *s2, size_t n)
@@ -65,4 +31,60 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 		i++;
 	}
 	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+}
+
+int	parse_double_bd(char *str, double *num)
+{
+	if (!*str)
+		return (-1);
+	*num = 0;
+	if (*str == '-')
+		str++;
+	while (*str != '.' && *str != 0 && ft_isdigit(*str))
+	{
+		*num *= 10;
+		*num += *str++ - '0';
+	}
+	if (!ft_isdigit(*str) && *str != 0 && *str != '.')
+		return (-1);
+	return (0);
+}
+
+int	parse_double_ad(char *str, double *num)
+{
+	int	sign;
+	int	den;
+
+	sign = 1;
+	if (*str == '-')
+	{
+		sign *= -1;
+		str++;
+	}
+	while (*str != '.' && *str != 0)
+		str++;
+	den = 10;
+	if (*str == '.' && *(str + 1))
+	{
+		str++;
+		while (ft_isdigit(*str))
+		{
+			*num += ((double)(*str++ - '0') / den) * sign;
+			den *= 10;
+		}
+	}
+	if (*str)
+		return (-1);
+	return (0);
+}
+
+int	check_given_params(char **argv, t_data *data)
+{
+	if (parse_double_bd(argv[2], &data->prm.re) == -1
+		|| parse_double_bd(argv[3], &data->prm.im) == -1)
+		return (-1);
+	if (parse_double_ad(argv[2], &data->prm.re) == -1
+		|| parse_double_ad(argv[3], &data->prm.im) == -1)
+		return (-1);
+	return (0);
 }

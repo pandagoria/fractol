@@ -1,12 +1,12 @@
 
 NAME = fractol
 
-SRCS = main.c mlx_utils.c \
-		utils.c julia.c  mandelbrot.c newton_pool.c \
+SRCS = main.c mlx_utils.c hooks.c\
+		utils.c fractals_iter.c complex_utils.c \
 
 OBJ = $(SRCS:.c=.o)
 
-FLAGS = -Wall -Wextra -Werror #-Ofast
+FLAGS = -Wall -Wextra -Werror -Ofast
 
 all: $(NAME)
 
