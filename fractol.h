@@ -68,7 +68,7 @@ int		check_given_params(char **argv, t_data *data);
 int		newton_iter(t_data *data);
 int		check_roots(t_complex *z);
 t_mlx	init_mlx(void);
-void	complex_sqrt(t_complex *data);
+void	complex_sqr(t_complex *data);
 void	my_mlx_pixel_put(t_mlx *mlx, int x, int y, int color);
 void	render_fractal(t_data *data);
 void	complex_div(t_complex *first, t_complex *second);

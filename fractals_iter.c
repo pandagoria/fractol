@@ -20,7 +20,7 @@ int	julia_iter(t_data *data)
 	while (n < 100 && (data->z.re * data->z.re)
 		+ (data->z.im * data->z.im) <= 4)
 	{
-		complex_sqrt(&data->z);
+		complex_sqr(&data->z);
 		data->z.re += data->prm.re;
 		data->z.im += data->prm.im;
 		n++;
@@ -40,7 +40,7 @@ int	mandelbrot_iter(t_data *data)
 	while (n < 100 && (data->z.re * data->z.re)
 		+ (data->z.im * data->z.im) <= 4)
 	{
-		complex_sqrt(&data->z);
+		complex_sqr(&data->z);
 		data->z.re += data->prm.re;
 		data->z.im += data->prm.im;
 		n++;
