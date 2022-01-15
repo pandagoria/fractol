@@ -6,7 +6,7 @@
 /*   By: hlaunch <hlaunch@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 23:51:25 by hlaunch           #+#    #+#             */
-/*   Updated: 2022/01/14 08:36:59 by hlaunch          ###   ########.fr       */
+/*   Updated: 2022/01/15 19:23:55 by hlaunch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,26 +55,18 @@ int	check_fractal(int argc, char **argv)
 
 	if (ft_strncmp("julia", argv[1], 6) == 0)
 	{
-		data.fractal = JULIA;
 		data.func = julia_iter;
 		if (argc != 4 || check_given_params(argv, &data) == -1)
 			return (-1);
 	}
 	else if (ft_strncmp("mandelbrot", argv[1], 11) == 0 && argc == 2)
-	{
-		data.fractal = MANDELBROT;
 		data.func = mandelbrot_iter;
-	}
 	else if (argc == 3 && ft_strncmp("newton", argv[1], 7) == 0
 		&& ft_strncmp("pool", argv[2], 5) == 0)
-	{
-		data.fractal = NEWTON;
 		data.func = newton_iter;
-	}
 	else
 		return (-1);
-	if (create_fractal(&data) == -1)
-		return (-1);
+	create_fractal(&data);
 	return (0);
 }
 

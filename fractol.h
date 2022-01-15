@@ -6,7 +6,7 @@
 /*   By: hlaunch <hlaunch@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/14 00:23:37 by hlaunch           #+#    #+#             */
-/*   Updated: 2022/01/14 08:36:48 by hlaunch          ###   ########.fr       */
+/*   Updated: 2022/01/15 19:23:54 by hlaunch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,6 @@
 # define SPACE	49
 # define ON_DESTROY	17
 # define KEY 2
-# define JULIA	0
-# define MANDELBROT	1
-# define NEWTON 2
 
 # include <mlx.h>
 # include <stdio.h>
@@ -49,7 +46,6 @@ struct		s_data;
 typedef int	(*t_iter_func)(struct s_data *data);
 
 typedef struct s_data {
-	int			fractal;
 	int			n;
 	int			color;
 	int			scale;
@@ -72,7 +68,6 @@ int		check_given_params(char **argv, t_data *data);
 int		newton_iter(t_data *data);
 int		check_roots(t_complex *z);
 t_mlx	init_mlx(void);
-void	complex_summ(t_complex *first, t_complex *second);
 void	complex_sqrt(t_complex *data);
 void	my_mlx_pixel_put(t_mlx *mlx, int x, int y, int color);
 void	render_fractal(t_data *data);

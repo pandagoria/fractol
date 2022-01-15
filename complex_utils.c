@@ -23,12 +23,6 @@ void	complex_sqrt(t_complex *data)
 	data->im = (re_tmp * im_tmp) * 2;
 }
 
-void	complex_summ(t_complex *first, t_complex *second)
-{
-	first->re += second->re;
-	first->im += second->im;
-}
-
 void	complex_mul(t_complex *first, t_complex *second)
 {
 	t_complex	res;

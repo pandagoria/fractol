@@ -11,7 +11,7 @@ FLAGS = -Wall -Wextra -Werror -Ofast
 all: $(NAME)
 
 %.o: %.c fractol.h
-	$(CC)  $(FLAGS) -Imlx -c $< -o $@ -I fractol.h
+	$(CC)  $(FLAGS) -Imlx -c $< -o $@
 
 $(NAME): $(OBJ)
 	$(CC) $(OBJ) $(FLAGS) -Lmlx -lmlx -framework OpenGL -framework AppKit -o $(NAME)
@@ -23,3 +23,5 @@ clean:
 
 fclean: clean
 	rm -rf $(NAME)
+
+.PHONY: clean fclean re all
