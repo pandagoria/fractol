@@ -6,7 +6,7 @@
 /*   By: hlaunch <hlaunch@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 23:51:25 by hlaunch           #+#    #+#             */
-/*   Updated: 2022/01/15 19:23:55 by hlaunch          ###   ########.fr       */
+/*   Updated: 2022/02/22 03:08:35 by hlaunch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,10 @@ void	render_fractal(t_data *data)
 			data->z.re = (double)(i - SIZE / 2) / data->scale;
 			data->z.im = (double)(j - SIZE / 2) / data->scale;
 			data->n = data->func(data);
+			//data->color * get_color(data->n);
+			data->n = (data->n)%10 * create_trgb((int)(sqrt(data->z.re * data->z.re + data->z.im * data->z.im) * 133) % 255, (int)(sqrt(data->z.re * data->z.re + data->z.im * data->z.im) * 1000) % 255, (int)(sqrt(data->z.re * data->z.re + data->z.im * data->z.im) * 2912) % 255);
 			my_mlx_pixel_put(&data->mlx, i, j,
-				data->color * get_color(data->n));
+				data->n * data->color);
 			j++;
 		}
 		i++;
@@ -51,6 +53,7 @@ int	create_fractal(t_data *data)
 
 int	check_fractal(int argc, char **argv)
 {
+	
 	t_data	data;
 
 	if (ft_strncmp("julia", argv[1], 6) == 0)

@@ -6,7 +6,7 @@
 /*   By: hlaunch <hlaunch@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 23:49:24 by hlaunch           #+#    #+#             */
-/*   Updated: 2022/01/14 00:42:18 by hlaunch          ###   ########.fr       */
+/*   Updated: 2022/02/22 02:44:07 by hlaunch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,18 +20,30 @@ void	my_mlx_pixel_put(t_mlx *mlx, int x, int y, int color)
 	*(unsigned int *)dst = color;
 }
 
-int	create_trgb(int t, int r, int g, int b)
+int	create_trgb(int r, int g, int b)
 {
-	return (t << 24 | r << 16 | g << 8 | b);
+	if (r < 0)
+		r = 0;
+	if (g < 0)
+		g = 0;
+	if (b < 0)
+		b = 0;
+	if (r > 255)
+		r = 255;
+	if (g > 255)
+		g = 255;
+	if (b > 255)
+		b = 255;
+	return (r << 16 | g << 8 | b);
 }
 
-int	get_color(int i)
+/*int	get_color(int i)
 {
 	if (i >= 100)
 		return (0);
 	else
 		return (create_trgb(0, 218, 112, 214) * i);
-}
+}*/
 
 t_mlx	init_mlx(void)
 {

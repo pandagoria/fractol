@@ -1,2 +1,0 @@
-fix scale type to DOUBLE
-change color scheme

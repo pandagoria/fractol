@@ -6,13 +6,13 @@
 /*   By: hlaunch <hlaunch@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/14 01:38:33 by hlaunch           #+#    #+#             */
-/*   Updated: 2022/01/14 03:58:21 by hlaunch          ###   ########.fr       */
+/*   Updated: 2022/02/22 02:12:35 by hlaunch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-void	complex_sqrt(t_complex *data)
+void	complex_sqr(t_complex *data)
 {
 	double	re_tmp;
 	double	im_tmp;

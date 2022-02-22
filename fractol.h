@@ -6,7 +6,7 @@
 /*   By: hlaunch <hlaunch@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/14 00:23:37 by hlaunch           #+#    #+#             */
-/*   Updated: 2022/01/15 19:23:54 by hlaunch          ###   ########.fr       */
+/*   Updated: 2022/02/22 03:01:36 by hlaunch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ typedef int	(*t_iter_func)(struct s_data *data);
 typedef struct s_data {
 	int			n;
 	int			color;
-	int			scale;
+	double		scale;
 	t_complex	z;
 	t_complex	prm;
 	t_iter_func	func;
@@ -67,6 +67,7 @@ int		mandelbrot_iter(t_data *data);
 int		check_given_params(char **argv, t_data *data);
 int		newton_iter(t_data *data);
 int		check_roots(t_complex *z);
+int		create_trgb(int r, int g, int b);
 t_mlx	init_mlx(void);
 void	complex_sqr(t_complex *data);
 void	my_mlx_pixel_put(t_mlx *mlx, int x, int y, int color);
