@@ -14,3 +14,4 @@
 	
 	ПРОБЕЛ - изменить цветовую палитру фрактала;
 	КОЛЕСИКО МЫШИ ВВЕРХ/ВНИЗ - приблизить/отдалить картинку;
+<img width="1468" alt="Screen Shot 2022-02-22 at 3 15 44 AM" src="https://github.com/pandagoria/fractol/blob/master/fractal_newton.gif">
